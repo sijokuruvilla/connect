@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  </head>
+  <body>
+  <div class="container">
+  <!-- Content here -->
+  
+  <br>
+  <h1> Add to contact book </h1>
+<br>
+
+<div class="row">
+<div class="col-lg-4 col-sm-12 col-md-6"> 
+  <form id="contact-form">
+  <div class="form-group">
+    <input type="text" id="name" class="form-control" aria-describedby="emailHelp" placeholder="First name">
+  </div>
+  
+  <div class="form-group">
+    <input type="text" id="phone" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Mobile">
+  </div>
+
+  <div class="form-group">
+    <input type="email" id="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email">
+  </div>
+  
+   <div class="form-group">
+    <input type="text" id="notes" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Notes">
+    <small id="emailHelp" class="form-text text-muted">Anything that will help reference our connect</small>
+  </div>
+  
+ 
+
+  <button id="btn" class="btn btn-primary" type="submit">Submit</button>
+  
+  <br><br>
+   Wait a few seconds after pressing submit button until a popup appears. 
+
+</form>
+</div>
+</div>
+  
+
+    </div>
+    <script>
+    
+    document.getElementById("contact-form").addEventListener("submit", doStuff)
+    
+     function onSuccess(numUnread) {
+
+    document.getElementById("name").value = "";
+    document.getElementById("phone").value = "";
+    document.getElementById("email").value = "";
+    document.getElementById("notes").value = "";
+    alert(" \n Ignore the above long gibberish text :) \n\n Contact successfully added")
+    
+      }
+    
+    
+    
+    function doStuff(e){
+    e.preventDefault();
+    var name = document.getElementById("name").value;
+    var phone = document.getElementById("phone").value;
+    var email = document.getElementById("email").value;    
+    var notes = document.getElementById("notes").value;  
+    google.script.run
+    .withSuccessHandler(onSuccess)
+    .userClicked(name,phone,email,notes);
+
+    }
+    
+    </script>
+    
+  </body>
+</html>
+
+<!--
+
+ <div class="form-group">
+    <label for="name">First name</label>
+    <input type="text" id="name" class="form-control" aria-describedby="emailHelp" placeholder="How you would like to be addressed as">
+    <small id="emailHelp" class="form-text text-muted">How you would like to be addressed as</small>
+  </div>
+  
+   <small id="emailHelp" class="form-text text-muted">How you would like to be addressed as</small>
+     <small id="emailHelp" class="form-text text-muted">To only be sparingly made use of</small>
+   
+ <small id="emailHelp" class="form-text text-muted">Only personal emails from me</small>
+ 
+-->
